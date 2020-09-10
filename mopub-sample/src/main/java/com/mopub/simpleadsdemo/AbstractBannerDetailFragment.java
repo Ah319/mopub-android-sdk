@@ -1,6 +1,4 @@
-// Copyright 2018-2020 Twitter, Inc.
-// Licensed under the MoPub SDK License Agreement
-// http://www.mopub.com/legal/sdk-license-agreement/
+
 
 package com.mopub.simpleadsdemo;
 
@@ -36,15 +34,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.mopub.mobileads.MoPubView.BannerAdListener;
 import static com.mopub.simpleadsdemo.Utils.hideSoftKeyboard;
 import static com.mopub.simpleadsdemo.Utils.logToast;
-
-/**
- * A base class for creating banner style ads with various height and width dimensions.
- * <p>
- * A subclass simply needs to specify the height and width of the ad in pixels, and this class will
- * inflate a layout containing a programmatically rescaled {@link MoPubView} that will be used to
- * display the ad.
- */
-public abstract class AbstractBannerDetailFragment extends Fragment implements BannerAdListener {
+Fragment implements BannerAdListener {
     @Nullable private MoPubView mMoPubView;
     private MoPubSampleAdUnit mMoPubSampleAdUnit;
     private DetailFragmentViewHolder mViewHolder;
@@ -53,18 +43,17 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements B
     public abstract MoPubView.MoPubAdSize getAdSize();
     protected MoPubAdSizeSettings mMoPubAdSizeSettings;
 
-    private enum AdSizeOption {
+     AdSizeOption {
         EXACT(0),
         MATCH_PARENT(ViewGroup.LayoutParams.MATCH_PARENT), // -1
         WRAP_CONTENT(ViewGroup.LayoutParams.WRAP_CONTENT); // -2
 
-        final int layoutParamValue;
+        layoutParamValue;
 
         AdSizeOption(final int layoutParamValue) {
             this.layoutParamValue = layoutParamValue;
         }
-
-        public int getLayoutParamsValue() {
+getLayoutParamsValue() {
             // getLayoutParamsValue returns the height or width value equivalent from ViewGroup.LayoutParams
             // ViewGroup.LayoutParams.MATCH_PARENT
             return layoutParamValue;
@@ -109,7 +98,7 @@ public abstract class AbstractBannerDetailFragment extends Fragment implements B
         int width;
         int height;
 
-        private static final String DETAIL_STRING = "MoPub Ad Size:\nadSize=%s\nw=%s\nh=%s";
+ DETAIL_STRING = "MoPub Ad Size:\nadSize=%s\nw=%s\nh=%s";
 
         MoPubAdSizeSettings(MoPubView.MoPubAdSize adSize,
                                    int width,
